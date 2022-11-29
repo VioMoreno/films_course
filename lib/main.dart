@@ -18,10 +18,12 @@ class MyApp extends StatelessWidget {
       },
       theme: ThemeData.dark().copyWith(
         appBarTheme: const AppBarTheme(
-          color: Colors.yellowAccent, 
+          color: Color.fromARGB(255, 236, 48, 45), 
           titleTextStyle: TextStyle(
             color: Colors.black,
             fontSize: 20,
+            fontWeight: FontWeight.bold,
+            
           ),
         )
       )

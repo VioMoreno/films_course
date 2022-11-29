@@ -14,7 +14,13 @@ class DetailsScreen extends StatelessWidget {
     return  Scaffold(
       body: CustomScrollView(
         slivers: [
-          _CustomAppBar ()
+          _CustomAppBar (),
+          SliverList(
+            delegate: SliverChildListDelegate ([
+              _PosterAndTitle(),
+              
+
+            ]))
         ],
       )
     );
@@ -36,7 +42,7 @@ class _CustomAppBar extends StatelessWidget {
         titlePadding: const EdgeInsets.all(0),
         title: Container(
           alignment: Alignment.bottomCenter,
-          color: Colors.black38,
+          color: Colors.black12,
           width: double.infinity,
           child: const Text(
             'movie.title',
@@ -52,5 +58,39 @@ class _CustomAppBar extends StatelessWidget {
           ),
       ),
     );
+  }
+}
+
+
+class _PosterAndTitle extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.only(top: 20),
+      padding: const EdgeInsets.symmetric( horizontal: 20),
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: const FadeInImage(
+              placeholder: AssetImage('assets/no-image.jpg'),
+              image: NetworkImage ('https://via.placeholder.com/200x300'),
+              height: 150,
+            ),
+          ),
+
+        const SizedBox(width: 20,), 
+
+         Column(
+          children: [
+            Text('movie.title', style: Theme.of(context).textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2),
+            Text('movie.originalTitle', style: Theme.of(context).textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2),
+          ],
+
+        )
+      ]),
+    );
+
   }
 }
