@@ -66,6 +66,9 @@ class _PosterAndTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final TextTheme textTheme = Theme.of(context).textTheme; 
+
     return Container(
       margin: const EdgeInsets.only(top: 20),
       padding: const EdgeInsets.symmetric( horizontal: 20),
@@ -83,9 +86,19 @@ class _PosterAndTitle extends StatelessWidget {
         const SizedBox(width: 20,), 
 
          Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('movie.title', style: Theme.of(context).textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2),
-            Text('movie.originalTitle', style: Theme.of(context).textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2),
+            Text('movie.title', style: textTheme.headline5, overflow: TextOverflow.ellipsis, maxLines: 2),
+            Text('movie.originalTitle', style: textTheme.subtitle1, overflow: TextOverflow.ellipsis),
+
+            Row(
+              children: [
+                const Icon(Icons.star_border_rounded, size: 20, color: Colors.green,),
+                const SizedBox( width: 10,),
+                Text('movie.voteAverage', style: textTheme.caption,)
+              ],
+            )
+
           ],
 
         )
