@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peliculas/widgets/widgets.dart';
 
 class DetailsScreen extends StatelessWidget {
    
@@ -18,6 +19,10 @@ class DetailsScreen extends StatelessWidget {
           SliverList(
             delegate: SliverChildListDelegate ([
               _PosterAndTitle(),
+              _Overview(),
+              _Overview(),
+              _Overview(),
+              CastingCards(),
               
 
             ]))
@@ -33,7 +38,7 @@ class _CustomAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  SliverAppBar(
-      backgroundColor: Colors.yellowAccent,
+      backgroundColor: Colors.orange[900],
       expandedHeight: 200,
       floating: false,
       pinned: true,
@@ -44,9 +49,10 @@ class _CustomAppBar extends StatelessWidget {
           alignment: Alignment.bottomCenter,
           color: Colors.black12,
           width: double.infinity,
+          padding: const EdgeInsets.only(bottom: 10),
           child: const Text(
             'movie.title',
-            style: TextStyle( fontSize: 16),
+            style: TextStyle( fontSize: 16, color: Colors.black),
             ),
 
         ),
@@ -107,3 +113,21 @@ class _PosterAndTitle extends StatelessWidget {
 
   }
 }
+
+
+class _Overview extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+
+    final TextTheme textTheme = Theme.of(context).textTheme; 
+
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      child: Text ('Dolor nisi sit sint quis et sint officia quis in labore. Aute enim culpa voluptate aliqua sint pariatur ut ad duis anim deserunt labore incididunt. Sit ad anim non excepteur consequat magna eu excepteur cupidatat ex adipisicing incididunt dolore. Est tempor elit id voluptate in cupidatat. Sit incididunt ea nulla anim nostrud mollit eiusmod nisi dolor aliqua sint cupidatat pariatur. Eu consectetur quis velit est eiusmod eiusmod eu nisi sunt veniam. Elit et laboris mollit nulla.', textAlign: TextAlign.justify,
+      style: textTheme.subtitle2,)
+    );
+    
+  }
+}
+
