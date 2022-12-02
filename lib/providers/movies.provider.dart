@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/models/now_playing_response.dart';
 
 
 class MoviesProvider extends ChangeNotifier {
@@ -25,8 +26,8 @@ getPlayMovies() async {
   });
 
   final  response = await http.get(url); 
-  final Map <String, dynamic> decodeData = json.decode(response.body);
-  print (decodeData); 
+  final nowPlayingResponde = NowPlayingResponse.fromJson(response.body);
+  print (nowPlayingResponde.results[1].title); 
 }
 
 }
