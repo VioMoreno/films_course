@@ -1,8 +1,8 @@
 
-import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
+import 'package:peliculas/models/movie.dart';
 import 'package:peliculas/models/now_playing_response.dart';
 
 
@@ -12,6 +12,8 @@ class MoviesProvider extends ChangeNotifier {
    String _baseUrl= 'api.themoviedb.org'; 
    String _lenguage= 'es-ES'; 
 
+ List <Movie> onDisplayMovie = []; 
+ 
   MoviesProvider(){
     print ('MoviesProvider inicializado');
     getPlayMovies();
@@ -27,7 +29,9 @@ getPlayMovies() async {
 
   final  response = await http.get(url); 
   final nowPlayingResponde = NowPlayingResponse.fromJson(response.body);
-  print (nowPlayingResponde.results[1].title); 
+
+  onDisplayMovie = nowPlayingResponde.results;
+  notifyListeners(); 
 }
 
 }
