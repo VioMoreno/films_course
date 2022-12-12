@@ -11,7 +11,7 @@ class MoviesProvider extends ChangeNotifier {
 
    String _apiKey= '7f5fa5f9d6e5d6ba27dbe56e05692cf8'; 
    String _baseUrl= 'api.themoviedb.org'; 
-   String _lenguage= 'es-ES'; 
+   String _languaje= 'es-ES'; 
 
  List <Movie> onDisplayMovie = []; 
  List <Movie> popularMovies = []; 
@@ -28,7 +28,7 @@ class MoviesProvider extends ChangeNotifier {
   Future <String> _getJsonData (String endpoint, [int page = 1]) async {
     var url = Uri.https(_baseUrl, endpoint, {
     'api_key': _apiKey,
-    'lenguage': _lenguage,
+    'language': _languaje,
     'page': '$page',
   });
 

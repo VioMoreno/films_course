@@ -33,7 +33,6 @@ class _MovieSliderState extends State<MovieSlider> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -46,10 +45,10 @@ class _MovieSliderState extends State<MovieSlider> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children:  [
 
-        if (this.widget.title != null )
+        if (widget.title != null )
            Padding(
             padding: const EdgeInsets.symmetric(horizontal:20),
-            child: Text(this.widget.title!, style: TextStyle (fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(158, 236, 48, 45)),)
+            child: Text(widget.title!, style: TextStyle (fontSize: 20, fontWeight: FontWeight.bold, color: Color.fromARGB(158, 236, 48, 45)),)
             ),
 
             const SizedBox(height: 5),
@@ -86,11 +85,11 @@ class _MoviePoster extends StatelessWidget {
         children:  [
 
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: 'movie-instance'),
+            onTap: () => Navigator.pushNamed(context, 'details', arguments: movie),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child:  FadeInImage(
-                placeholder: const AssetImage('assets/no-image.jpg'), 
+                placeholder:  AssetImage('assets/no-image.jpg'), 
                 image: NetworkImage(movie.fullPosterImg),
                 height: 190,
                 width: 130,
